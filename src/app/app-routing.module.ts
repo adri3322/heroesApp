@@ -1,35 +1,34 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 
-const routes:Routes=[
+const routes: Routes = [
   {
-    path:'auth',
-    loadChildren:()=> import('./auth/auth.module').then(m=>m.AuthModule)
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then( m => m.AuthModule )
   },
   {
-    path:'heroes',
-    loadChildren:()=> import('./heroes/heroes.module').then(m=>m.HeroesModule)
+    path: 'heroes',
+    loadChildren: () => import('./heroes/heroes.module').then( m => m.HeroesModule )
   },
   {
-    path:'404',
-    component:ErrorPageComponent
+    path: '404',
+    component: ErrorPageComponent
   },
-
   {
-    path:'**',
-    //component:ErrorPageComponent
-    redirectTo:'404'
+    path: '**',
+    // component: ErrorPageComponent
+    redirectTo: '404'
   }
 ]
 
 
 @NgModule({
-  declarations: [],
   imports: [
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot( routes )
   ],
-  exports:[
+  exports: [
     RouterModule
   ]
 })
